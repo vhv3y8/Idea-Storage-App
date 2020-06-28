@@ -1,0 +1,4 @@
+1. install node.js
+2.npm install -g create-react-native-app(using window powershall)
+3.mkdir myfirst_directory(using cmd)
+4.create-react-native-app first-project(using npm is (npm (using cmd))
