@@ -8,7 +8,7 @@ export default class IO extends React.Component {
         console.log("complete input"); //return complete-signal
     };
     static delete = (key) => {
-        key.DB = null; // delete file
+        //key.DB = null; // delete file
         console.log("complete delete"); //return complete-signal
     };
     static tag = (tagJSON) => {
