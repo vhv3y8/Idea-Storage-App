@@ -1,33 +1,52 @@
-import React from "react";
-import { View, Text } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import React, { Component } from 'react';
+import {Text, View, AsyncStorage } from 'react-native';
 
 export default class IO extends React.Component {
 
-    static input = (JSONdata) => {
-        //key.DB = JSONdata; //input this JSON
-        console.log("complete input"); //return complete-signal
-        console.log(JSONdata);
-    };
-    static delete = (key) => {
-        //key.DB = null; // delete file
-        console.log("complete delete"); //return complete-signal
-    };
-    static tag = (tagJSON) => {
-        console.log("JSONdatas"); // return JSON in tagging datas 
-    };
-    static edit = (key) => {
-        console.log("keyJSON"); // return this JSON
-    };
-    static All = () => {
-        consol.log("DBJSON"); //return JSON in All datas
+    static input = (value) => {
+        console.log(value);
+        try{
+        //     key = Math.random();
+            AsyncStorage.setItem(1, JSON.stringify(value));
+            return 1;
+        }
+        catch(error){
+            return -1;
+        }
     };
 
-    render() {
-        return (
-            {
-                title: "title body",
-                body: "body body"
-            }
-        )
+    static edit = (key) => {
+        try{
+            const value = AsyncStorage.getItem(key);
+            value = JSON.parse(value);
+            console.log(value);
+            value = this.props.navigation.navigate('add', value);
+            AsyncStorage.mergeItem(key, JSON.stringify(this.value));
+            return 1;
+        }
+        catch(error){
+            return -1;
+        }
+    };
+
+    static delete = (key) => {
+        try{
+            AsyncStorage.removeItem(key);
+            return 1;
+        }
+        catch(error){
+            return -1;
+        }
+    };
+
+    static tag = (keys) => {
+        try{
+            AsyncStorage.removeItem(key);
+            return 1;
+        }
+        catch(error){
+            return -1;
+        }
     };
 }
